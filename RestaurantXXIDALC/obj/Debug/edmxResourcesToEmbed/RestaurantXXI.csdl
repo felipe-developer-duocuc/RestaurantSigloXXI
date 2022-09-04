@@ -1,0 +1,479 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DB_RESTAURANT_SXXIModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ESTADO_MESA">
+    <Key>
+      <PropertyRef Name="id_estado_mesa" />
+    </Key>
+    <Property Name="id_estado_mesa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="MESA" Relationship="Self.FK_Table_State_Table" FromRole="ESTADO_MESA" ToRole="MESA" />
+  </EntityType>
+  <EntityType Name="ESTADO_SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR">
+    <Key>
+      <PropertyRef Name="id_estado_solicitud_insumo_producto_proveedor" />
+    </Key>
+    <Property Name="id_estado_solicitud_insumo_producto_proveedor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR" Relationship="Self.FK_Order_Of_Supplies_Product_Provider_State_Order_Of_Supplies_Product_Provider" FromRole="ESTADO_SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR" ToRole="SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR" />
+  </EntityType>
+  <EntityType Name="MESA">
+    <Key>
+      <PropertyRef Name="id_mesa" />
+    </Key>
+    <Property Name="id_mesa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="numero" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="estado_mesa_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ESTADO_MESA" Relationship="Self.FK_Table_State_Table" FromRole="MESA" ToRole="ESTADO_MESA" />
+    <NavigationProperty Name="ORDEN" Relationship="Self.FK_ORDEN_MESA1" FromRole="MESA" ToRole="ORDEN" />
+  </EntityType>
+  <EntityType Name="ORDEN">
+    <Key>
+      <PropertyRef Name="id_orden" />
+    </Key>
+    <Property Name="id_orden" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="mesa_id" Type="Int32" Nullable="false" />
+    <Property Name="pagada" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="creado_en" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="MESA" Relationship="Self.FK_ORDEN_MESA1" FromRole="ORDEN" ToRole="MESA" />
+    <NavigationProperty Name="RECETA_ORDEN" Relationship="Self.FK_RECETA_ORDEN_ORDEN" FromRole="ORDEN" ToRole="RECETA_ORDEN" />
+  </EntityType>
+  <EntityType Name="PRODUCTO">
+    <Key>
+      <PropertyRef Name="id_producto" />
+    </Key>
+    <Property Name="id_producto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="creado_en" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="modificado_en" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="PRODUCTO_PROVEEDOR" Relationship="Self.FK_Product_Provider" FromRole="PRODUCTO" ToRole="PRODUCTO_PROVEEDOR" />
+    <NavigationProperty Name="RECETA_PRODUCTO" Relationship="Self.FK_Recipe_Product_Product" FromRole="PRODUCTO" ToRole="RECETA_PRODUCTO" />
+  </EntityType>
+  <EntityType Name="PRODUCTO_PROVEEDOR">
+    <Key>
+      <PropertyRef Name="id_producto_proveedor" />
+    </Key>
+    <Property Name="id_producto_proveedor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="producto_id" Type="Int32" Nullable="false" />
+    <Property Name="proveedor_id" Type="Int32" Nullable="false" />
+    <Property Name="precio" Type="Int32" Nullable="false" />
+    <Property Name="creado_en" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="modificado_en" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="PRODUCTO" Relationship="Self.FK_Product_Provider" FromRole="PRODUCTO_PROVEEDOR" ToRole="PRODUCTO" />
+    <NavigationProperty Name="SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR" Relationship="Self.FK_Order_Of_Supplies_Product_Provider_Product_Provider" FromRole="PRODUCTO_PROVEEDOR" ToRole="SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR" />
+    <NavigationProperty Name="PROVEEDOR" Relationship="Self.FK_Provider_Product" FromRole="PRODUCTO_PROVEEDOR" ToRole="PROVEEDOR" />
+  </EntityType>
+  <EntityType Name="PROVEEDOR">
+    <Key>
+      <PropertyRef Name="id_proveedor" />
+    </Key>
+    <Property Name="id_proveedor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="categoria" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="correo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="creado_en" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="modificado_en" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="PRODUCTO_PROVEEDOR" Relationship="Self.FK_Provider_Product" FromRole="PROVEEDOR" ToRole="PRODUCTO_PROVEEDOR" />
+  </EntityType>
+  <EntityType Name="RECETA">
+    <Key>
+      <PropertyRef Name="id_receta" />
+    </Key>
+    <Property Name="id_receta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="precio" Type="Int32" Nullable="false" />
+    <Property Name="usuario_id" Type="Int32" Nullable="false" />
+    <Property Name="creado_en" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="modificado_en" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="RECETA_ORDEN" Relationship="Self.FK_RECETA_ORDEN_RECETA" FromRole="RECETA" ToRole="RECETA_ORDEN" />
+    <NavigationProperty Name="RECETA_PRODUCTO" Relationship="Self.FK_Recipe_Product_Recipe" FromRole="RECETA" ToRole="RECETA_PRODUCTO" />
+    <NavigationProperty Name="USUARIO" Relationship="Self.FK_Recipe_User" FromRole="RECETA" ToRole="USUARIO" />
+  </EntityType>
+  <EntityType Name="RECETA_ORDEN">
+    <Key>
+      <PropertyRef Name="id_receta_orden" />
+    </Key>
+    <Property Name="id_receta_orden" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="orden_id" Type="Int32" Nullable="false" />
+    <Property Name="receta_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ORDEN" Relationship="Self.FK_RECETA_ORDEN_ORDEN" FromRole="RECETA_ORDEN" ToRole="ORDEN" />
+    <NavigationProperty Name="RECETA" Relationship="Self.FK_RECETA_ORDEN_RECETA" FromRole="RECETA_ORDEN" ToRole="RECETA" />
+  </EntityType>
+  <EntityType Name="RECETA_PRODUCTO">
+    <Key>
+      <PropertyRef Name="id_receta_producto" />
+    </Key>
+    <Property Name="id_receta_producto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="receta_id" Type="Int32" Nullable="false" />
+    <Property Name="producto_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="PRODUCTO" Relationship="Self.FK_Recipe_Product_Product" FromRole="RECETA_PRODUCTO" ToRole="PRODUCTO" />
+    <NavigationProperty Name="RECETA" Relationship="Self.FK_Recipe_Product_Recipe" FromRole="RECETA_PRODUCTO" ToRole="RECETA" />
+  </EntityType>
+  <EntityType Name="RESERVA">
+    <Key>
+      <PropertyRef Name="id_reserva" />
+    </Key>
+    <Property Name="id_reserva" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="correo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="fecha" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="hora" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="comensales" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ROL">
+    <Key>
+      <PropertyRef Name="id_rol" />
+    </Key>
+    <Property Name="id_rol" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="USUARIO" Relationship="Self.FK_User_Rol" FromRole="ROL" ToRole="USUARIO" />
+  </EntityType>
+  <EntityType Name="SOLICITUD_INSUMO">
+    <Key>
+      <PropertyRef Name="id_solicitud_insumo" />
+    </Key>
+    <Property Name="id_solicitud_insumo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="usuario_id" Type="Int32" Nullable="false" />
+    <Property Name="creado_en" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="modificado_en" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR" Relationship="Self.FK_Order_Of_Supplies_Product_Provider_Order_Of_Supplies" FromRole="SOLICITUD_INSUMO" ToRole="SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR" />
+    <NavigationProperty Name="USUARIO" Relationship="Self.FK_Order_Supplies_User" FromRole="SOLICITUD_INSUMO" ToRole="USUARIO" />
+  </EntityType>
+  <EntityType Name="SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR">
+    <Key>
+      <PropertyRef Name="id_solicitud_insumo_producto_proveedor" />
+    </Key>
+    <Property Name="id_solicitud_insumo_producto_proveedor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="solicitud_insumo_id" Type="Int32" Nullable="false" />
+    <Property Name="producto_proveedor_id" Type="Int32" Nullable="false" />
+    <Property Name="cantidad" Type="Int32" Nullable="false" />
+    <Property Name="recepcion_usuario_id" Type="Int32" />
+    <Property Name="estado_solicitud_insumo_producto_proveedor_id" Type="Int32" Nullable="false" />
+    <Property Name="observaciones" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ESTADO_SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR" Relationship="Self.FK_Order_Of_Supplies_Product_Provider_State_Order_Of_Supplies_Product_Provider" FromRole="SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR" ToRole="ESTADO_SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR" />
+    <NavigationProperty Name="PRODUCTO_PROVEEDOR" Relationship="Self.FK_Order_Of_Supplies_Product_Provider_Product_Provider" FromRole="SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR" ToRole="PRODUCTO_PROVEEDOR" />
+    <NavigationProperty Name="SOLICITUD_INSUMO" Relationship="Self.FK_Order_Of_Supplies_Product_Provider_Order_Of_Supplies" FromRole="SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR" ToRole="SOLICITUD_INSUMO" />
+    <NavigationProperty Name="USUARIO" Relationship="Self.FK_Order_Of_Supplies_Product_Provider_User" FromRole="SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR" ToRole="USUARIO" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="USUARIO">
+    <Key>
+      <PropertyRef Name="id_usuario" />
+    </Key>
+    <Property Name="id_usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombres" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="apellido_paterno" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="apellido_materno" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="correo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="nombre_usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="contrasenia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="rol_id" Type="Int32" Nullable="false" />
+    <Property Name="creado_en" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="modificado_en" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="RECETA" Relationship="Self.FK_Recipe_User" FromRole="USUARIO" ToRole="RECETA" />
+    <NavigationProperty Name="ROL" Relationship="Self.FK_User_Rol" FromRole="USUARIO" ToRole="ROL" />
+    <NavigationProperty Name="SOLICITUD_INSUMO" Relationship="Self.FK_Order_Supplies_User" FromRole="USUARIO" ToRole="SOLICITUD_INSUMO" />
+    <NavigationProperty Name="SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR" Relationship="Self.FK_Order_Of_Supplies_Product_Provider_User" FromRole="USUARIO" ToRole="SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR" />
+  </EntityType>
+  <Association Name="FK_Table_State_Table">
+    <End Role="ESTADO_MESA" Type="Self.ESTADO_MESA" Multiplicity="1" />
+    <End Role="MESA" Type="Self.MESA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ESTADO_MESA">
+        <PropertyRef Name="id_estado_mesa" />
+      </Principal>
+      <Dependent Role="MESA">
+        <PropertyRef Name="estado_mesa_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_Of_Supplies_Product_Provider_State_Order_Of_Supplies_Product_Provider">
+    <End Role="ESTADO_SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR" Type="Self.ESTADO_SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR" Multiplicity="1" />
+    <End Role="SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR" Type="Self.SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ESTADO_SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR">
+        <PropertyRef Name="id_estado_solicitud_insumo_producto_proveedor" />
+      </Principal>
+      <Dependent Role="SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR">
+        <PropertyRef Name="estado_solicitud_insumo_producto_proveedor_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ORDEN_MESA1">
+    <End Role="MESA" Type="Self.MESA" Multiplicity="1" />
+    <End Role="ORDEN" Type="Self.ORDEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MESA">
+        <PropertyRef Name="id_mesa" />
+      </Principal>
+      <Dependent Role="ORDEN">
+        <PropertyRef Name="mesa_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RECETA_ORDEN_ORDEN">
+    <End Role="ORDEN" Type="Self.ORDEN" Multiplicity="1" />
+    <End Role="RECETA_ORDEN" Type="Self.RECETA_ORDEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ORDEN">
+        <PropertyRef Name="id_orden" />
+      </Principal>
+      <Dependent Role="RECETA_ORDEN">
+        <PropertyRef Name="orden_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_Provider">
+    <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="1" />
+    <End Role="PRODUCTO_PROVEEDOR" Type="Self.PRODUCTO_PROVEEDOR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODUCTO">
+        <PropertyRef Name="id_producto" />
+      </Principal>
+      <Dependent Role="PRODUCTO_PROVEEDOR">
+        <PropertyRef Name="producto_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Recipe_Product_Product">
+    <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="1" />
+    <End Role="RECETA_PRODUCTO" Type="Self.RECETA_PRODUCTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODUCTO">
+        <PropertyRef Name="id_producto" />
+      </Principal>
+      <Dependent Role="RECETA_PRODUCTO">
+        <PropertyRef Name="producto_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_Of_Supplies_Product_Provider_Product_Provider">
+    <End Role="PRODUCTO_PROVEEDOR" Type="Self.PRODUCTO_PROVEEDOR" Multiplicity="1" />
+    <End Role="SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR" Type="Self.SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODUCTO_PROVEEDOR">
+        <PropertyRef Name="id_producto_proveedor" />
+      </Principal>
+      <Dependent Role="SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR">
+        <PropertyRef Name="producto_proveedor_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Provider_Product">
+    <End Role="PROVEEDOR" Type="Self.PROVEEDOR" Multiplicity="1" />
+    <End Role="PRODUCTO_PROVEEDOR" Type="Self.PRODUCTO_PROVEEDOR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PROVEEDOR">
+        <PropertyRef Name="id_proveedor" />
+      </Principal>
+      <Dependent Role="PRODUCTO_PROVEEDOR">
+        <PropertyRef Name="proveedor_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RECETA_ORDEN_RECETA">
+    <End Role="RECETA" Type="Self.RECETA" Multiplicity="1" />
+    <End Role="RECETA_ORDEN" Type="Self.RECETA_ORDEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RECETA">
+        <PropertyRef Name="id_receta" />
+      </Principal>
+      <Dependent Role="RECETA_ORDEN">
+        <PropertyRef Name="receta_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Recipe_Product_Recipe">
+    <End Role="RECETA" Type="Self.RECETA" Multiplicity="1" />
+    <End Role="RECETA_PRODUCTO" Type="Self.RECETA_PRODUCTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RECETA">
+        <PropertyRef Name="id_receta" />
+      </Principal>
+      <Dependent Role="RECETA_PRODUCTO">
+        <PropertyRef Name="receta_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Recipe_User">
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+    <End Role="RECETA" Type="Self.RECETA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="id_usuario" />
+      </Principal>
+      <Dependent Role="RECETA">
+        <PropertyRef Name="usuario_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Rol">
+    <End Role="ROL" Type="Self.ROL" Multiplicity="1" />
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ROL">
+        <PropertyRef Name="id_rol" />
+      </Principal>
+      <Dependent Role="USUARIO">
+        <PropertyRef Name="rol_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_Of_Supplies_Product_Provider_Order_Of_Supplies">
+    <End Role="SOLICITUD_INSUMO" Type="Self.SOLICITUD_INSUMO" Multiplicity="1" />
+    <End Role="SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR" Type="Self.SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SOLICITUD_INSUMO">
+        <PropertyRef Name="id_solicitud_insumo" />
+      </Principal>
+      <Dependent Role="SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR">
+        <PropertyRef Name="solicitud_insumo_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_Supplies_User">
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+    <End Role="SOLICITUD_INSUMO" Type="Self.SOLICITUD_INSUMO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="id_usuario" />
+      </Principal>
+      <Dependent Role="SOLICITUD_INSUMO">
+        <PropertyRef Name="usuario_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_Of_Supplies_Product_Provider_User">
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="0..1" />
+    <End Role="SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR" Type="Self.SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="id_usuario" />
+      </Principal>
+      <Dependent Role="SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR">
+        <PropertyRef Name="recepcion_usuario_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DB_RESTAURANT_SXXIEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ESTADO_MESA" EntityType="Self.ESTADO_MESA" />
+    <EntitySet Name="ESTADO_SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR" EntityType="Self.ESTADO_SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR" />
+    <EntitySet Name="MESA" EntityType="Self.MESA" />
+    <EntitySet Name="ORDEN" EntityType="Self.ORDEN" />
+    <EntitySet Name="PRODUCTO" EntityType="Self.PRODUCTO" />
+    <EntitySet Name="PRODUCTO_PROVEEDOR" EntityType="Self.PRODUCTO_PROVEEDOR" />
+    <EntitySet Name="PROVEEDOR" EntityType="Self.PROVEEDOR" />
+    <EntitySet Name="RECETA" EntityType="Self.RECETA" />
+    <EntitySet Name="RECETA_ORDEN" EntityType="Self.RECETA_ORDEN" />
+    <EntitySet Name="RECETA_PRODUCTO" EntityType="Self.RECETA_PRODUCTO" />
+    <EntitySet Name="RESERVA" EntityType="Self.RESERVA" />
+    <EntitySet Name="ROL" EntityType="Self.ROL" />
+    <EntitySet Name="SOLICITUD_INSUMO" EntityType="Self.SOLICITUD_INSUMO" />
+    <EntitySet Name="SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR" EntityType="Self.SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="USUARIO" EntityType="Self.USUARIO" />
+    <AssociationSet Name="FK_Table_State_Table" Association="Self.FK_Table_State_Table">
+      <End Role="ESTADO_MESA" EntitySet="ESTADO_MESA" />
+      <End Role="MESA" EntitySet="MESA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_Of_Supplies_Product_Provider_State_Order_Of_Supplies_Product_Provider" Association="Self.FK_Order_Of_Supplies_Product_Provider_State_Order_Of_Supplies_Product_Provider">
+      <End Role="ESTADO_SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR" EntitySet="ESTADO_SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR" />
+      <End Role="SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR" EntitySet="SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ORDEN_MESA1" Association="Self.FK_ORDEN_MESA1">
+      <End Role="MESA" EntitySet="MESA" />
+      <End Role="ORDEN" EntitySet="ORDEN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RECETA_ORDEN_ORDEN" Association="Self.FK_RECETA_ORDEN_ORDEN">
+      <End Role="ORDEN" EntitySet="ORDEN" />
+      <End Role="RECETA_ORDEN" EntitySet="RECETA_ORDEN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_Provider" Association="Self.FK_Product_Provider">
+      <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+      <End Role="PRODUCTO_PROVEEDOR" EntitySet="PRODUCTO_PROVEEDOR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Recipe_Product_Product" Association="Self.FK_Recipe_Product_Product">
+      <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+      <End Role="RECETA_PRODUCTO" EntitySet="RECETA_PRODUCTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_Of_Supplies_Product_Provider_Product_Provider" Association="Self.FK_Order_Of_Supplies_Product_Provider_Product_Provider">
+      <End Role="PRODUCTO_PROVEEDOR" EntitySet="PRODUCTO_PROVEEDOR" />
+      <End Role="SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR" EntitySet="SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Provider_Product" Association="Self.FK_Provider_Product">
+      <End Role="PROVEEDOR" EntitySet="PROVEEDOR" />
+      <End Role="PRODUCTO_PROVEEDOR" EntitySet="PRODUCTO_PROVEEDOR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RECETA_ORDEN_RECETA" Association="Self.FK_RECETA_ORDEN_RECETA">
+      <End Role="RECETA" EntitySet="RECETA" />
+      <End Role="RECETA_ORDEN" EntitySet="RECETA_ORDEN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Recipe_Product_Recipe" Association="Self.FK_Recipe_Product_Recipe">
+      <End Role="RECETA" EntitySet="RECETA" />
+      <End Role="RECETA_PRODUCTO" EntitySet="RECETA_PRODUCTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Recipe_User" Association="Self.FK_Recipe_User">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="RECETA" EntitySet="RECETA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Rol" Association="Self.FK_User_Rol">
+      <End Role="ROL" EntitySet="ROL" />
+      <End Role="USUARIO" EntitySet="USUARIO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_Of_Supplies_Product_Provider_Order_Of_Supplies" Association="Self.FK_Order_Of_Supplies_Product_Provider_Order_Of_Supplies">
+      <End Role="SOLICITUD_INSUMO" EntitySet="SOLICITUD_INSUMO" />
+      <End Role="SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR" EntitySet="SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_Supplies_User" Association="Self.FK_Order_Supplies_User">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="SOLICITUD_INSUMO" EntitySet="SOLICITUD_INSUMO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_Of_Supplies_Product_Provider_User" Association="Self.FK_Order_Of_Supplies_Product_Provider_User">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR" EntitySet="SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR" />
+    </AssociationSet>
+    <FunctionImport Name="Mesa_Insert">
+      <Parameter Name="numero" Mode="In" Type="String" />
+      <Parameter Name="estado_mesa_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+  </EntityContainer>
+</Schema>

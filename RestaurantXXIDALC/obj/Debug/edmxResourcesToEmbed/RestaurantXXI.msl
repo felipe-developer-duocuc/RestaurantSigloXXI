@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DB_RESTAURANT_SXXIModelStoreContainer" CdmEntityContainer="DB_RESTAURANT_SXXIEntities1">
+    <EntitySetMapping Name="ESTADO_MESA">
+      <EntityTypeMapping TypeName="DB_RESTAURANT_SXXIModel.ESTADO_MESA">
+        <MappingFragment StoreEntitySet="ESTADO_MESA">
+          <ScalarProperty Name="id_estado_mesa" ColumnName="id_estado_mesa" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ESTADO_SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR">
+      <EntityTypeMapping TypeName="DB_RESTAURANT_SXXIModel.ESTADO_SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR">
+        <MappingFragment StoreEntitySet="ESTADO_SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR">
+          <ScalarProperty Name="id_estado_solicitud_insumo_producto_proveedor" ColumnName="id_estado_solicitud_insumo_producto_proveedor" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MESA">
+      <EntityTypeMapping TypeName="DB_RESTAURANT_SXXIModel.MESA">
+        <MappingFragment StoreEntitySet="MESA">
+          <ScalarProperty Name="id_mesa" ColumnName="id_mesa" />
+          <ScalarProperty Name="numero" ColumnName="numero" />
+          <ScalarProperty Name="estado_mesa_id" ColumnName="estado_mesa_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ORDEN">
+      <EntityTypeMapping TypeName="DB_RESTAURANT_SXXIModel.ORDEN">
+        <MappingFragment StoreEntitySet="ORDEN">
+          <ScalarProperty Name="id_orden" ColumnName="id_orden" />
+          <ScalarProperty Name="mesa_id" ColumnName="mesa_id" />
+          <ScalarProperty Name="pagada" ColumnName="pagada" />
+          <ScalarProperty Name="creado_en" ColumnName="creado_en" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PRODUCTO">
+      <EntityTypeMapping TypeName="DB_RESTAURANT_SXXIModel.PRODUCTO">
+        <MappingFragment StoreEntitySet="PRODUCTO">
+          <ScalarProperty Name="id_producto" ColumnName="id_producto" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="creado_en" ColumnName="creado_en" />
+          <ScalarProperty Name="modificado_en" ColumnName="modificado_en" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PRODUCTO_PROVEEDOR">
+      <EntityTypeMapping TypeName="DB_RESTAURANT_SXXIModel.PRODUCTO_PROVEEDOR">
+        <MappingFragment StoreEntitySet="PRODUCTO_PROVEEDOR">
+          <ScalarProperty Name="id_producto_proveedor" ColumnName="id_producto_proveedor" />
+          <ScalarProperty Name="producto_id" ColumnName="producto_id" />
+          <ScalarProperty Name="proveedor_id" ColumnName="proveedor_id" />
+          <ScalarProperty Name="precio" ColumnName="precio" />
+          <ScalarProperty Name="creado_en" ColumnName="creado_en" />
+          <ScalarProperty Name="modificado_en" ColumnName="modificado_en" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PROVEEDOR">
+      <EntityTypeMapping TypeName="DB_RESTAURANT_SXXIModel.PROVEEDOR">
+        <MappingFragment StoreEntitySet="PROVEEDOR">
+          <ScalarProperty Name="id_proveedor" ColumnName="id_proveedor" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="categoria" ColumnName="categoria" />
+          <ScalarProperty Name="correo" ColumnName="correo" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="creado_en" ColumnName="creado_en" />
+          <ScalarProperty Name="modificado_en" ColumnName="modificado_en" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RECETA">
+      <EntityTypeMapping TypeName="DB_RESTAURANT_SXXIModel.RECETA">
+        <MappingFragment StoreEntitySet="RECETA">
+          <ScalarProperty Name="id_receta" ColumnName="id_receta" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="precio" ColumnName="precio" />
+          <ScalarProperty Name="usuario_id" ColumnName="usuario_id" />
+          <ScalarProperty Name="creado_en" ColumnName="creado_en" />
+          <ScalarProperty Name="modificado_en" ColumnName="modificado_en" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RECETA_ORDEN">
+      <EntityTypeMapping TypeName="DB_RESTAURANT_SXXIModel.RECETA_ORDEN">
+        <MappingFragment StoreEntitySet="RECETA_ORDEN">
+          <ScalarProperty Name="id_receta_orden" ColumnName="id_receta_orden" />
+          <ScalarProperty Name="orden_id" ColumnName="orden_id" />
+          <ScalarProperty Name="receta_id" ColumnName="receta_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RECETA_PRODUCTO">
+      <EntityTypeMapping TypeName="DB_RESTAURANT_SXXIModel.RECETA_PRODUCTO">
+        <MappingFragment StoreEntitySet="RECETA_PRODUCTO">
+          <ScalarProperty Name="id_receta_producto" ColumnName="id_receta_producto" />
+          <ScalarProperty Name="receta_id" ColumnName="receta_id" />
+          <ScalarProperty Name="producto_id" ColumnName="producto_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RESERVA">
+      <EntityTypeMapping TypeName="DB_RESTAURANT_SXXIModel.RESERVA">
+        <MappingFragment StoreEntitySet="RESERVA">
+          <ScalarProperty Name="id_reserva" ColumnName="id_reserva" />
+          <ScalarProperty Name="correo" ColumnName="correo" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="hora" ColumnName="hora" />
+          <ScalarProperty Name="comensales" ColumnName="comensales" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ROL">
+      <EntityTypeMapping TypeName="DB_RESTAURANT_SXXIModel.ROL">
+        <MappingFragment StoreEntitySet="ROL">
+          <ScalarProperty Name="id_rol" ColumnName="id_rol" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SOLICITUD_INSUMO">
+      <EntityTypeMapping TypeName="DB_RESTAURANT_SXXIModel.SOLICITUD_INSUMO">
+        <MappingFragment StoreEntitySet="SOLICITUD_INSUMO">
+          <ScalarProperty Name="id_solicitud_insumo" ColumnName="id_solicitud_insumo" />
+          <ScalarProperty Name="usuario_id" ColumnName="usuario_id" />
+          <ScalarProperty Name="creado_en" ColumnName="creado_en" />
+          <ScalarProperty Name="modificado_en" ColumnName="modificado_en" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR">
+      <EntityTypeMapping TypeName="DB_RESTAURANT_SXXIModel.SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR">
+        <MappingFragment StoreEntitySet="SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR">
+          <ScalarProperty Name="id_solicitud_insumo_producto_proveedor" ColumnName="id_solicitud_insumo_producto_proveedor" />
+          <ScalarProperty Name="solicitud_insumo_id" ColumnName="solicitud_insumo_id" />
+          <ScalarProperty Name="producto_proveedor_id" ColumnName="producto_proveedor_id" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+          <ScalarProperty Name="recepcion_usuario_id" ColumnName="recepcion_usuario_id" />
+          <ScalarProperty Name="estado_solicitud_insumo_producto_proveedor_id" ColumnName="estado_solicitud_insumo_producto_proveedor_id" />
+          <ScalarProperty Name="observaciones" ColumnName="observaciones" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="DB_RESTAURANT_SXXIModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USUARIO">
+      <EntityTypeMapping TypeName="DB_RESTAURANT_SXXIModel.USUARIO">
+        <MappingFragment StoreEntitySet="USUARIO">
+          <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+          <ScalarProperty Name="nombres" ColumnName="nombres" />
+          <ScalarProperty Name="apellido_paterno" ColumnName="apellido_paterno" />
+          <ScalarProperty Name="apellido_materno" ColumnName="apellido_materno" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="correo" ColumnName="correo" />
+          <ScalarProperty Name="nombre_usuario" ColumnName="nombre_usuario" />
+          <ScalarProperty Name="contrasenia" ColumnName="contrasenia" />
+          <ScalarProperty Name="rol_id" ColumnName="rol_id" />
+          <ScalarProperty Name="creado_en" ColumnName="creado_en" />
+          <ScalarProperty Name="modificado_en" ColumnName="modificado_en" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Mesa_Insert" FunctionName="DB_RESTAURANT_SXXIModel.Store.Mesa_Insert" />
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="DB_RESTAURANT_SXXIModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="DB_RESTAURANT_SXXIModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="DB_RESTAURANT_SXXIModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="DB_RESTAURANT_SXXIModel.Store.sp_helpdiagramdefinition" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="DB_RESTAURANT_SXXIModel.Store.sp_helpdiagrams" />
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="DB_RESTAURANT_SXXIModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="DB_RESTAURANT_SXXIModel.Store.sp_upgraddiagrams" />
+  </EntityContainerMapping>
+</Mapping>

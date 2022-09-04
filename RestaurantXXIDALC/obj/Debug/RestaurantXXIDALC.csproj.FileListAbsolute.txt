@@ -1,0 +1,10 @@
+C:\Users\Pipe\source\repos\RestaurantXXI\RestaurantXXIDALC\bin\Debug\RestaurantXXIDALC.dll.config
+C:\Users\Pipe\source\repos\RestaurantXXI\RestaurantXXIDALC\bin\Debug\RestaurantXXIDALC.dll
+C:\Users\Pipe\source\repos\RestaurantXXI\RestaurantXXIDALC\bin\Debug\RestaurantXXIDALC.pdb
+C:\Users\Pipe\source\repos\RestaurantXXI\RestaurantXXIDALC\bin\Debug\EntityFramework.dll
+C:\Users\Pipe\source\repos\RestaurantXXI\RestaurantXXIDALC\bin\Debug\EntityFramework.xml
+C:\Users\Pipe\source\repos\RestaurantXXI\RestaurantXXIDALC\obj\Debug\RestaurantXXIDALC.csprojAssemblyReference.cache
+C:\Users\Pipe\source\repos\RestaurantXXI\RestaurantXXIDALC\obj\Debug\RestaurantXXIDALC.csproj.CoreCompileInputs.cache
+C:\Users\Pipe\source\repos\RestaurantXXI\RestaurantXXIDALC\obj\Debug\RestaurantXXIDALC.csproj.CopyComplete
+C:\Users\Pipe\source\repos\RestaurantXXI\RestaurantXXIDALC\obj\Debug\RestaurantXXIDALC.dll
+C:\Users\Pipe\source\repos\RestaurantXXI\RestaurantXXIDALC\obj\Debug\RestaurantXXIDALC.pdb

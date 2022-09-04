@@ -1,0 +1,450 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DB_RESTAURANT_SXXIModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ESTADO_MESA">
+    <Key>
+      <PropertyRef Name="id_estado_mesa" />
+    </Key>
+    <Property Name="id_estado_mesa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ESTADO_SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR">
+    <Key>
+      <PropertyRef Name="id_estado_solicitud_insumo_producto_proveedor" />
+    </Key>
+    <Property Name="id_estado_solicitud_insumo_producto_proveedor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MESA">
+    <Key>
+      <PropertyRef Name="id_mesa" />
+    </Key>
+    <Property Name="id_mesa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="numero" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="estado_mesa_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ORDEN">
+    <Key>
+      <PropertyRef Name="id_orden" />
+    </Key>
+    <Property Name="id_orden" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="mesa_id" Type="int" Nullable="false" />
+    <Property Name="pagada" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="creado_en" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="PRODUCTO">
+    <Key>
+      <PropertyRef Name="id_producto" />
+    </Key>
+    <Property Name="id_producto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="creado_en" Type="nvarchar" MaxLength="10" />
+    <Property Name="modificado_en" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="PRODUCTO_PROVEEDOR">
+    <Key>
+      <PropertyRef Name="id_producto_proveedor" />
+    </Key>
+    <Property Name="id_producto_proveedor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="producto_id" Type="int" Nullable="false" />
+    <Property Name="proveedor_id" Type="int" Nullable="false" />
+    <Property Name="precio" Type="int" Nullable="false" />
+    <Property Name="creado_en" Type="nvarchar" MaxLength="50" />
+    <Property Name="modificado_en" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="PROVEEDOR">
+    <Key>
+      <PropertyRef Name="id_proveedor" />
+    </Key>
+    <Property Name="id_proveedor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="categoria" Type="nvarchar" MaxLength="50" />
+    <Property Name="correo" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="telefono" Type="nvarchar" MaxLength="50" />
+    <Property Name="creado_en" Type="nvarchar" MaxLength="10" />
+    <Property Name="modificado_en" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="RECETA">
+    <Key>
+      <PropertyRef Name="id_receta" />
+    </Key>
+    <Property Name="id_receta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="precio" Type="int" Nullable="false" />
+    <Property Name="usuario_id" Type="int" Nullable="false" />
+    <Property Name="creado_en" Type="nvarchar" MaxLength="10" />
+    <Property Name="modificado_en" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="RECETA_ORDEN">
+    <Key>
+      <PropertyRef Name="id_receta_orden" />
+    </Key>
+    <Property Name="id_receta_orden" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="orden_id" Type="int" Nullable="false" />
+    <Property Name="receta_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RECETA_PRODUCTO">
+    <Key>
+      <PropertyRef Name="id_receta_producto" />
+    </Key>
+    <Property Name="id_receta_producto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="receta_id" Type="int" Nullable="false" />
+    <Property Name="producto_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RESERVA">
+    <Key>
+      <PropertyRef Name="id_reserva" />
+    </Key>
+    <Property Name="id_reserva" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="correo" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="fecha" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="hora" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="comensales" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ROL">
+    <Key>
+      <PropertyRef Name="id_rol" />
+    </Key>
+    <Property Name="id_rol" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SOLICITUD_INSUMO">
+    <Key>
+      <PropertyRef Name="id_solicitud_insumo" />
+    </Key>
+    <Property Name="id_solicitud_insumo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="usuario_id" Type="int" Nullable="false" />
+    <Property Name="creado_en" Type="nvarchar" MaxLength="10" />
+    <Property Name="modificado_en" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR">
+    <Key>
+      <PropertyRef Name="id_solicitud_insumo_producto_proveedor" />
+    </Key>
+    <Property Name="id_solicitud_insumo_producto_proveedor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="solicitud_insumo_id" Type="int" Nullable="false" />
+    <Property Name="producto_proveedor_id" Type="int" Nullable="false" />
+    <Property Name="cantidad" Type="int" Nullable="false" />
+    <Property Name="recepcion_usuario_id" Type="int" />
+    <Property Name="estado_solicitud_insumo_producto_proveedor_id" Type="int" Nullable="false" />
+    <Property Name="observaciones" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="USUARIO">
+    <Key>
+      <PropertyRef Name="id_usuario" />
+    </Key>
+    <Property Name="id_usuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombres" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="apellido_paterno" Type="nvarchar" MaxLength="50" />
+    <Property Name="apellido_materno" Type="nvarchar" MaxLength="50" />
+    <Property Name="telefono" Type="nvarchar" MaxLength="50" />
+    <Property Name="correo" Type="nvarchar" MaxLength="250" />
+    <Property Name="nombre_usuario" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="contrasenia" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="rol_id" Type="int" Nullable="false" />
+    <Property Name="creado_en" Type="nvarchar" MaxLength="10" />
+    <Property Name="modificado_en" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <Association Name="FK_ORDEN_MESA1">
+    <End Role="MESA" Type="Self.MESA" Multiplicity="1" />
+    <End Role="ORDEN" Type="Self.ORDEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MESA">
+        <PropertyRef Name="id_mesa" />
+      </Principal>
+      <Dependent Role="ORDEN">
+        <PropertyRef Name="mesa_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_Of_Supplies_Product_Provider_Order_Of_Supplies">
+    <End Role="SOLICITUD_INSUMO" Type="Self.SOLICITUD_INSUMO" Multiplicity="1" />
+    <End Role="SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR" Type="Self.SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SOLICITUD_INSUMO">
+        <PropertyRef Name="id_solicitud_insumo" />
+      </Principal>
+      <Dependent Role="SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR">
+        <PropertyRef Name="solicitud_insumo_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_Of_Supplies_Product_Provider_Product_Provider">
+    <End Role="PRODUCTO_PROVEEDOR" Type="Self.PRODUCTO_PROVEEDOR" Multiplicity="1" />
+    <End Role="SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR" Type="Self.SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODUCTO_PROVEEDOR">
+        <PropertyRef Name="id_producto_proveedor" />
+      </Principal>
+      <Dependent Role="SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR">
+        <PropertyRef Name="producto_proveedor_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_Of_Supplies_Product_Provider_State_Order_Of_Supplies_Product_Provider">
+    <End Role="ESTADO_SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR" Type="Self.ESTADO_SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR" Multiplicity="1" />
+    <End Role="SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR" Type="Self.SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ESTADO_SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR">
+        <PropertyRef Name="id_estado_solicitud_insumo_producto_proveedor" />
+      </Principal>
+      <Dependent Role="SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR">
+        <PropertyRef Name="estado_solicitud_insumo_producto_proveedor_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_Of_Supplies_Product_Provider_User">
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="0..1" />
+    <End Role="SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR" Type="Self.SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="id_usuario" />
+      </Principal>
+      <Dependent Role="SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR">
+        <PropertyRef Name="recepcion_usuario_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_Supplies_User">
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+    <End Role="SOLICITUD_INSUMO" Type="Self.SOLICITUD_INSUMO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="id_usuario" />
+      </Principal>
+      <Dependent Role="SOLICITUD_INSUMO">
+        <PropertyRef Name="usuario_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_Provider">
+    <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="1" />
+    <End Role="PRODUCTO_PROVEEDOR" Type="Self.PRODUCTO_PROVEEDOR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODUCTO">
+        <PropertyRef Name="id_producto" />
+      </Principal>
+      <Dependent Role="PRODUCTO_PROVEEDOR">
+        <PropertyRef Name="producto_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Provider_Product">
+    <End Role="PROVEEDOR" Type="Self.PROVEEDOR" Multiplicity="1" />
+    <End Role="PRODUCTO_PROVEEDOR" Type="Self.PRODUCTO_PROVEEDOR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PROVEEDOR">
+        <PropertyRef Name="id_proveedor" />
+      </Principal>
+      <Dependent Role="PRODUCTO_PROVEEDOR">
+        <PropertyRef Name="proveedor_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RECETA_ORDEN_ORDEN">
+    <End Role="ORDEN" Type="Self.ORDEN" Multiplicity="1" />
+    <End Role="RECETA_ORDEN" Type="Self.RECETA_ORDEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ORDEN">
+        <PropertyRef Name="id_orden" />
+      </Principal>
+      <Dependent Role="RECETA_ORDEN">
+        <PropertyRef Name="orden_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RECETA_ORDEN_RECETA">
+    <End Role="RECETA" Type="Self.RECETA" Multiplicity="1" />
+    <End Role="RECETA_ORDEN" Type="Self.RECETA_ORDEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RECETA">
+        <PropertyRef Name="id_receta" />
+      </Principal>
+      <Dependent Role="RECETA_ORDEN">
+        <PropertyRef Name="receta_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Recipe_Product_Product">
+    <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="1" />
+    <End Role="RECETA_PRODUCTO" Type="Self.RECETA_PRODUCTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODUCTO">
+        <PropertyRef Name="id_producto" />
+      </Principal>
+      <Dependent Role="RECETA_PRODUCTO">
+        <PropertyRef Name="producto_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Recipe_Product_Recipe">
+    <End Role="RECETA" Type="Self.RECETA" Multiplicity="1" />
+    <End Role="RECETA_PRODUCTO" Type="Self.RECETA_PRODUCTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RECETA">
+        <PropertyRef Name="id_receta" />
+      </Principal>
+      <Dependent Role="RECETA_PRODUCTO">
+        <PropertyRef Name="receta_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Recipe_User">
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+    <End Role="RECETA" Type="Self.RECETA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="id_usuario" />
+      </Principal>
+      <Dependent Role="RECETA">
+        <PropertyRef Name="usuario_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Table_State_Table">
+    <End Role="ESTADO_MESA" Type="Self.ESTADO_MESA" Multiplicity="1" />
+    <End Role="MESA" Type="Self.MESA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ESTADO_MESA">
+        <PropertyRef Name="id_estado_mesa" />
+      </Principal>
+      <Dependent Role="MESA">
+        <PropertyRef Name="estado_mesa_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Rol">
+    <End Role="ROL" Type="Self.ROL" Multiplicity="1" />
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ROL">
+        <PropertyRef Name="id_rol" />
+      </Principal>
+      <Dependent Role="USUARIO">
+        <PropertyRef Name="rol_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="Mesa_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="numero" Type="nvarchar" Mode="In" />
+    <Parameter Name="estado_mesa_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="DB_RESTAURANT_SXXIModelStoreContainer">
+    <EntitySet Name="ESTADO_MESA" EntityType="Self.ESTADO_MESA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ESTADO_SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR" EntityType="Self.ESTADO_SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MESA" EntityType="Self.MESA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ORDEN" EntityType="Self.ORDEN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PRODUCTO" EntityType="Self.PRODUCTO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PRODUCTO_PROVEEDOR" EntityType="Self.PRODUCTO_PROVEEDOR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PROVEEDOR" EntityType="Self.PROVEEDOR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RECETA" EntityType="Self.RECETA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RECETA_ORDEN" EntityType="Self.RECETA_ORDEN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RECETA_PRODUCTO" EntityType="Self.RECETA_PRODUCTO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RESERVA" EntityType="Self.RESERVA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ROL" EntityType="Self.ROL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SOLICITUD_INSUMO" EntityType="Self.SOLICITUD_INSUMO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR" EntityType="Self.SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="USUARIO" EntityType="Self.USUARIO" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_ORDEN_MESA1" Association="Self.FK_ORDEN_MESA1">
+      <End Role="MESA" EntitySet="MESA" />
+      <End Role="ORDEN" EntitySet="ORDEN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_Of_Supplies_Product_Provider_Order_Of_Supplies" Association="Self.FK_Order_Of_Supplies_Product_Provider_Order_Of_Supplies">
+      <End Role="SOLICITUD_INSUMO" EntitySet="SOLICITUD_INSUMO" />
+      <End Role="SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR" EntitySet="SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_Of_Supplies_Product_Provider_Product_Provider" Association="Self.FK_Order_Of_Supplies_Product_Provider_Product_Provider">
+      <End Role="PRODUCTO_PROVEEDOR" EntitySet="PRODUCTO_PROVEEDOR" />
+      <End Role="SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR" EntitySet="SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_Of_Supplies_Product_Provider_State_Order_Of_Supplies_Product_Provider" Association="Self.FK_Order_Of_Supplies_Product_Provider_State_Order_Of_Supplies_Product_Provider">
+      <End Role="ESTADO_SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR" EntitySet="ESTADO_SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR" />
+      <End Role="SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR" EntitySet="SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_Of_Supplies_Product_Provider_User" Association="Self.FK_Order_Of_Supplies_Product_Provider_User">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR" EntitySet="SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_Supplies_User" Association="Self.FK_Order_Supplies_User">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="SOLICITUD_INSUMO" EntitySet="SOLICITUD_INSUMO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_Provider" Association="Self.FK_Product_Provider">
+      <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+      <End Role="PRODUCTO_PROVEEDOR" EntitySet="PRODUCTO_PROVEEDOR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Provider_Product" Association="Self.FK_Provider_Product">
+      <End Role="PROVEEDOR" EntitySet="PROVEEDOR" />
+      <End Role="PRODUCTO_PROVEEDOR" EntitySet="PRODUCTO_PROVEEDOR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RECETA_ORDEN_ORDEN" Association="Self.FK_RECETA_ORDEN_ORDEN">
+      <End Role="ORDEN" EntitySet="ORDEN" />
+      <End Role="RECETA_ORDEN" EntitySet="RECETA_ORDEN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RECETA_ORDEN_RECETA" Association="Self.FK_RECETA_ORDEN_RECETA">
+      <End Role="RECETA" EntitySet="RECETA" />
+      <End Role="RECETA_ORDEN" EntitySet="RECETA_ORDEN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Recipe_Product_Product" Association="Self.FK_Recipe_Product_Product">
+      <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+      <End Role="RECETA_PRODUCTO" EntitySet="RECETA_PRODUCTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Recipe_Product_Recipe" Association="Self.FK_Recipe_Product_Recipe">
+      <End Role="RECETA" EntitySet="RECETA" />
+      <End Role="RECETA_PRODUCTO" EntitySet="RECETA_PRODUCTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Recipe_User" Association="Self.FK_Recipe_User">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="RECETA" EntitySet="RECETA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Table_State_Table" Association="Self.FK_Table_State_Table">
+      <End Role="ESTADO_MESA" EntitySet="ESTADO_MESA" />
+      <End Role="MESA" EntitySet="MESA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Rol" Association="Self.FK_User_Rol">
+      <End Role="ROL" EntitySet="ROL" />
+      <End Role="USUARIO" EntitySet="USUARIO" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

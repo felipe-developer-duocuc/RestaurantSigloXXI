@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="53095c094b2142a7a84eb8acd21bcf08" Name="Diagram1">
+        <EntityTypeShape EntityType="DB_RESTAURANT_SXXIModel.ESTADO_MESA" Width="1.5" PointX="0.75" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_RESTAURANT_SXXIModel.ESTADO_SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR" Width="1.5" PointX="5.25" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_RESTAURANT_SXXIModel.MESA" Width="1.5" PointX="3" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_RESTAURANT_SXXIModel.ORDEN" Width="1.5" PointX="5.25" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_RESTAURANT_SXXIModel.PRODUCTO" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_RESTAURANT_SXXIModel.PRODUCTO_PROVEEDOR" Width="1.5" PointX="5.25" PointY="17.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_RESTAURANT_SXXIModel.PROVEEDOR" Width="1.5" PointX="3" PointY="17.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_RESTAURANT_SXXIModel.RECETA" Width="1.5" PointX="5.25" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_RESTAURANT_SXXIModel.RECETA_ORDEN" Width="1.5" PointX="7.5" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_RESTAURANT_SXXIModel.RECETA_PRODUCTO" Width="1.5" PointX="7.5" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_RESTAURANT_SXXIModel.RESERVA" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_RESTAURANT_SXXIModel.ROL" Width="1.5" PointX="0.75" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_RESTAURANT_SXXIModel.SOLICITUD_INSUMO" Width="1.5" PointX="5.25" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_RESTAURANT_SXXIModel.SOLICITUD_INSUMO_PRODUCTO_PROVEEDOR" Width="1.5" PointX="7.5" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_RESTAURANT_SXXIModel.sysdiagrams" Width="1.5" PointX="9.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_RESTAURANT_SXXIModel.USUARIO" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
+        <AssociationConnector Association="DB_RESTAURANT_SXXIModel.FK_Table_State_Table" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_RESTAURANT_SXXIModel.FK_Order_Of_Supplies_Product_Provider_State_Order_Of_Supplies_Product_Provider" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_RESTAURANT_SXXIModel.FK_ORDEN_MESA1" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_RESTAURANT_SXXIModel.FK_RECETA_ORDEN_ORDEN" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_RESTAURANT_SXXIModel.FK_Product_Provider" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_RESTAURANT_SXXIModel.FK_Recipe_Product_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_RESTAURANT_SXXIModel.FK_Order_Of_Supplies_Product_Provider_Product_Provider" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_RESTAURANT_SXXIModel.FK_Provider_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_RESTAURANT_SXXIModel.FK_RECETA_ORDEN_RECETA" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_RESTAURANT_SXXIModel.FK_Recipe_Product_Recipe" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_RESTAURANT_SXXIModel.FK_Recipe_User" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_RESTAURANT_SXXIModel.FK_User_Rol" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_RESTAURANT_SXXIModel.FK_Order_Of_Supplies_Product_Provider_Order_Of_Supplies" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_RESTAURANT_SXXIModel.FK_Order_Supplies_User" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_RESTAURANT_SXXIModel.FK_Order_Of_Supplies_Product_Provider_User" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
